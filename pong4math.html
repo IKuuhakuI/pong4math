@@ -2,7 +2,9 @@
 	<head>
 		<link rel="shortcut icon" href="C:\Users\MAXX\Desktop\Trabalhos ORT\Técnico\PR\Site\favicon.ico">
 		<meta charset="utf-8">
+		
 		<title>Pong4Math</title>
+		
 		<style>
 			ul {
         		list-style-type: none;
@@ -88,21 +90,16 @@
         		color: black;
         		font-family: arial;
       		}
-      		
-
 		</style>
-      
 	</head>
-
 	<body style="background-color: black">
 		<!--Logo-->
 		<h1><p id="pong"> Pong4Math </p></h1>
 
 		<!--Menu-->
         <ul>
-      		<li><a href="/">Home</a></li>
-      		<li><a href="/pong">Pong de 2</a></li>
-      		<li><a class="active" href="/pongde4">Pong de 4</a></li>
+      		<li><a href="index.html">Home</a></li>
+      		<li><a class="active" href="pong4math.html">Pong de 4</a></li>
     	</ul>
 
     	<!--Canvas principal-->
@@ -112,8 +109,12 @@
 		<!--<canvas id="campo" height="720" width="3"></canvas>-->
 
 		<script>
+			//sounds
+			var pongSound = new Audio();
+			pongSound.src = "pongSound.mp3";
+
 			//Constantes
-			const SCORE = 10;
+			const SCORE = 1;
 
 			//Aviso
 		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)")
@@ -183,6 +184,7 @@
 				teclas[e.keyCode] = true;
 				//alert(e.keyCode);
 			}, false);
+			
 			document.addEventListener("keyup", function(e) {
 				delete teclas[e.keyCode];
 			}, false);
@@ -223,42 +225,49 @@
 					bola.dirx = 1;
 					bola.diry = -3;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > esquerda.y + (esquerda.altura * 1/8) && bola.y <= esquerda.y + (esquerda.altura * 2/8) && bola.x <= esquerda.x + esquerda.largura) {
 					bola.dirx = 1;
 					bola.diry = -2;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > esquerda.y + (esquerda.altura * 2/8) && bola.y <= esquerda.y + (esquerda.altura * 3/8) && bola.x <= esquerda.x + esquerda.largura) {
 					bola.dirx = 1;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > esquerda.y + (esquerda.altura * 3/8) && bola.y <= esquerda.y + (esquerda.altura * 5/8) && bola.x <= esquerda.x + esquerda.largura) {
 					bola.dirx = 1;
 					bola.diry = 0;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > esquerda.y + (esquerda.altura * 5/8) && bola.y <= esquerda.y + (esquerda.altura * 6/8) && bola.x <= esquerda.x + esquerda.largura) {
 					bola.dirx = 1;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > esquerda.y + (esquerda.altura * 6/8) && bola.y <= esquerda.y + (esquerda.altura * 7/8) && bola.x <= esquerda.x + esquerda.largura) {
 					bola.dirx = 1;
 					bola.diry = 2;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > esquerda.y + (esquerda.altura * 7/8) && bola.y <= esquerda.y + esquerda.altura && bola.x <= esquerda.x + esquerda.largura) {
 					bola.dirx = 1;
 					bola.diry = 3;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				//direita
@@ -266,42 +275,49 @@
 					bola.dirx = -1;
 					bola.diry = -3;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > direita.y + (direita.altura * 1/8) && bola.y <= direita.y + (direita.altura * 2/8) && bola.x + bola.largura >= direita.x) {
 					bola.dirx = -1;
 					bola.diry = -2;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > direita.y + (direita.altura * 2/8) && bola.y <= direita.y + (direita.altura * 3/8) && bola.x + bola.largura >= direita.x) {
 					bola.dirx = -1;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > direita.y + (direita.altura * 3/8) && bola.y <= direita.y + (direita.altura * 5/8) && bola.x + bola.largura >= direita.x) {
 					bola.dirx = -1;
 					bola.diry = 0;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > direita.y + (direita.altura * 5/8) && bola.y <= direita.y + (direita.altura * 6/8) && bola.x + bola.largura >= direita.x) {
 					bola.dirx = -1;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > direita.y + (direita.altura * 6/8) && bola.y <= direita.y + (direita.altura * 7/8) && bola.x + bola.largura >= direita.x) {
 					bola.dirx = -1;
 					bola.diry = 2;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.y + bola.altura > direita.y + (direita.altura * 7/8) && bola.y <= direita.y + direita.altura && bola.x + bola.largura >= direita.x) {
 					bola.dirx = -1;
 					bola.diry = 3;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				//baixo
@@ -309,42 +325,49 @@
 					bola.dirx = -3;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > baixo.x + (baixo.largura * 1/8) && bola.x <= baixo.x + (baixo.largura * 2/8) && bola.y + bola.altura >= baixo.y) {
 					bola.dirx = -2;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > baixo.x + (baixo.largura * 2/8) && bola.x <= baixo.x + (baixo.largura * 3/8) && bola.y + bola.altura >= baixo.y) {
 					bola.dirx = -1;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > baixo.x + (baixo.largura * 3/8) && bola.x <= baixo.x + (baixo.largura * 5/8) && bola.y + bola.altura >= baixo.y) {
 					bola.dirx = 0;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > baixo.x + (baixo.largura * 5/8) && bola.x <= baixo.x + (baixo.largura * 6/8) && bola.y + bola.altura >= baixo.y) {
 					bola.dirx = 1;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > baixo.x + (baixo.largura * 6/8) && bola.x <= baixo.x + (baixo.largura * 7/8) && bola.y + bola.altura >= baixo.y) {
 					bola.dirx = 2;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > baixo.x + (baixo.largura * 7/8) && bola.x <= baixo.x + baixo.largura && bola.y + bola.altura >= baixo.y) {
 					bola.dirx = 3;
 					bola.diry = -1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				//cima
@@ -352,42 +375,49 @@
 					bola.dirx = -3;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > cima.x + (cima.largura * 1/8) && bola.x <= cima.x + (cima.largura * 2/8) && bola.y <= cima.y + cima.altura) {
 					bola.dirx = -2;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > cima.x + (cima.largura * 2/8) && bola.x <= cima.x + (cima.largura * 3/8) && bola.y <= cima.y + cima.altura) {
 					bola.dirx = -1;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > cima.x + (cima.largura * 3/8) && bola.x <= cima.x + (cima.largura * 5/8) && bola.y <= cima.y + cima.altura) {
 					bola.dirx = 0;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > cima.x + (cima.largura * 5/8) && bola.x <= cima.x + (cima.largura * 6/8) && bola.y <= cima.y + cima.altura) {
 					bola.dirx = 1;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > cima.x + (cima.largura * 6/8) && bola.x <= cima.x + (cima.largura * 7/8) && bola.y <= cima.y + cima.altura) {
 					bola.dirx = 2;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 
 				else if(bola.x + bola.largura > cima.x + (cima.largura * 7/8) && bola.x <= cima.x + cima.largura && bola.y <= cima.y + cima.altura) {
 					bola.dirx = 3;
 					bola.diry = 1;
 					bola.mod += 0.1;
+					pongSound.play();
 				}
 				
 				bola.x += (bola.speed + bola.mod) * bola.dirx;
@@ -414,7 +444,7 @@
 					if (continuarJogando) {
   						window.location.reload();
 					} else {
-  						//fazer alguma coisa
+  						window.location.replace("index.html")
 					}
 				}
 				if (direita.score == SCORE){
@@ -425,7 +455,7 @@
 					if (continuarJogando) {
   						window.location.reload();
 					} else {
-  						//fazer alguma coisa
+  						window.location.href("index.html");
 					}
 				}
 
@@ -481,4 +511,9 @@
 		</script>
 	
 	</body>
+	<!-- var pongSound = new Audio();
+pongSound.src = "pongSound.mp3";
+
+pongSound.play();
+-->
 </html>
