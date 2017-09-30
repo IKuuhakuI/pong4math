@@ -166,17 +166,6 @@
 				speed: 5
 			};
 
-			//Jogador direita
-			var direita = {
-				x: canvas.width - 40,
-				y: canvas.height / 2 - 60,
-				altura: 150,
-				largura: 25,
-				diry: 0,
-				score: 0,
-				speed: 5
-			};
-
 			//Jogador de cima
 			var cima = {
 				x: canvas.width / 2 - 60,
@@ -184,9 +173,20 @@
 				altura: 25,
 				largura: 150,
 				diry: 0,
-				
 				speed: 5
 			};
+
+			//Player 2
+				//Jogador direita
+				var direita = {
+					x: canvas.width - 40,
+					y: canvas.height / 2 - 60,
+					altura: 150,
+					largura: 25,
+					diry: 0,
+					score: 0,
+					speed: 5
+				};
 
 			//Jogador de baixo
 			var baixo = {
@@ -195,7 +195,6 @@
 				altura: 25,
 				largura: 150,
 				diry: 0,
-				
 				speed: 5
 			};
 
@@ -455,7 +454,7 @@
 				bola.x += (bola.speed + bola.mod) * bola.dirx;
 				bola.y += (bola.speed + bola.mod) * bola.diry;
 
-				if(bola.x < esquerda.x + esquerda.largura - 30 || bola.y <= 0)
+				if(bola.x < esquerda.x + esquerda.largura - 30 || bola.y <= cima.y + cima.altura -30)
 					score("player 2");
 
 				else if(bola.x + bola.largura > direita.x + 30 || bola.y + bola.altura > baixo.y + 30)
@@ -493,7 +492,7 @@
 					if (continuarJogando) {
   						window.location.reload();
 					} else {
-  						window.location.href("index.html");
+  						window.location.replace("index.html");
 					}
 				}
 
