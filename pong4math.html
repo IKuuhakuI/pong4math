@@ -54,14 +54,27 @@
        	 		background-color: white;
         		color: black;
       		}
-      		#campo {
+
+      		#divisaoVertical {
 			    border: white;
 			    border-style: dotted;
 				background-color: black;
 				margin-top:  -300px;
+				margin-left: 345px;
+				position: absolute;
+				left: 33%;
+				top: 45%;
+				z-index: 10;
+			}
+
+			#divisaoHorizontal {
+			    border: white;
+			    border-style: dotted;
+				background-color: black;
+				margin-top:  65px;
 				margin-left: -300px;
 				position: absolute;
-				left: 66.3%;
+				left: 33%;
 				top: 45%;
 				z-index: 10;
 			}
@@ -106,9 +119,24 @@
 		<canvas id="mycanvas" height="720" width="1280">O seu browser não suporta este elemento</canvas>
 
 		<!--Detalhes do campo-->
-		<!--<canvas id="campo" height="720" width="3"></canvas>-->
+			<!--Vertical-->
+			<canvas id="divisaoVertical" height="720" width="3"></canvas>
+			
+			<!--Horizontal-->
+			<canvas id="divisaoHorizontal" height="3" width="1280"></canvas>
+		<!--FIM DETALHES-->
 
 		<script>
+			//Constantes
+			const SCORE = 10;
+
+			//Canvas
+			var canvas = document.getElementById("mycanvas");
+			var ctx = canvas.getContext("2d");
+
+			//Teclas
+			var teclas = {};
+			
 			//sounds
 			 		//Som que toca quando um jogador acerta a bola
 					var pongSound = new Audio();
@@ -124,15 +152,8 @@
 
 			//END SOUNDS
 
-			//Constantes
-			const SCORE = 10;
-
-			//Aviso
-		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)")
-			var canvas = document.getElementById("mycanvas");
-			var ctx = canvas.getContext("2d");
-
-			var teclas = {};
+			//Como jogar 
+		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)");
 
 			//Jogador esquerda
 			var esquerda = {
@@ -191,14 +212,14 @@
 			};
 
 			//Listeners
-			document.addEventListener("keydown", function(e) {
-				teclas[e.keyCode] = true;
-				//alert(e.keyCode);
-			}, false);
+				document.addEventListener("keydown", function(e) {
+					teclas[e.keyCode] = true;
+					//alert(e.keyCode);
+				}, false);
 			
-			document.addEventListener("keyup", function(e) {
-				delete teclas[e.keyCode];
-			}, false);
+				document.addEventListener("keyup", function(e) {
+					delete teclas[e.keyCode];
+				}, false);
 			//FIM Listerners
 
 			//Funções
@@ -523,6 +544,7 @@
 			};
 
 			//FIM FUNÇÕES
+
 			//Tempo para redesenhar tudo
 			setInterval(desenha, 1);
 		</script>
