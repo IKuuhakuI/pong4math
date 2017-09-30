@@ -110,8 +110,14 @@
 
 		<script>
 			//sounds
-			var pongSound = new Audio();
-			pongSound.src = "pongSound.mp3";
+			 		//Som que toca quando um jogador acerta a bola
+					var pongSound = new Audio();
+					pongSound.src = "pongSound.mp3";
+
+					//Som que toca quando um jogador ganha
+					var winnerSound = new Audio();
+					winnerSound.src = "winnerSound.mp3";
+			//END SOUNDS
 
 			//Constantes
 			const SCORE = 10;
@@ -437,6 +443,7 @@
 				else if(winner == "player 2")
 					++direita.score;
 				if (esquerda.score == SCORE){
+					winnerSound.play();
 					alert("Jogador 1 é o vencedor!");
 					
 					//Cria uma caixa de mensagem perguntando se os jogadores querem continuar 
@@ -448,6 +455,7 @@
 					}
 				}
 				if (direita.score == SCORE){
+					winnerSound.play();
 					alert("Jogador 2 é o vencedor!");
 					
 					//Cria uma caixa de mensagem perguntando se os jogadores querem continuar 
