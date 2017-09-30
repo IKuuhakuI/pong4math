@@ -117,6 +117,11 @@
 					//Som que toca quando um jogador ganha
 					var winnerSound = new Audio();
 					winnerSound.src = "winnerSound.mp3";
+
+					//Som que toca qunado um jogador marca um ponto
+					var scoreSound = new Audio();
+					scoreSound.src = "scoreSound.mp3";
+
 			//END SOUNDS
 
 			//Constantes
@@ -438,10 +443,14 @@
 
 			//Função que define quem marcou o ponto
 			function score(winner) {
-				if(winner == "player 1")
+				if(winner == "player 1"){
+					scoreSound.play();
 					++esquerda.score;
-				else if(winner == "player 2")
+				}
+				else if(winner == "player 2"){
+					scoreSound.play();
 					++direita.score;
+				}
 				if (esquerda.score == SCORE){
 					winnerSound.play();
 					alert("Jogador 1 é o vencedor!");
@@ -519,9 +528,4 @@
 		</script>
 	
 	</body>
-	<!-- var pongSound = new Audio();
-pongSound.src = "pongSound.mp3";
-
-pongSound.play();
--->
 </html>
