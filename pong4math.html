@@ -55,28 +55,18 @@
         		color: black;
       		}
 
-      		#divisaoVertical {
-			    border: white;
-			    border-style: dotted;
-				background-color: black;
-				margin-top:  -300px;
-				margin-left: 345px;
-				position: absolute;
-				left: 33%;
-				top: 45%;
-				z-index: 10;
-			}
-
 			#divisaoHorizontal {
 			    border: white;
-			    border-style: dotted;
+			    border-style: solid;
 				background-color: black;
-				margin-top:  65px;
-				margin-left: -300px;
+				margin-top:  60px;
+				margin-left: -393.3px;
 				position: absolute;
 				left: 33%;
 				top: 45%;
 				z-index: 10;
+				transform:rotate(-29.35deg);
+				border-radius: 100px;
 			}
 
 			#mycanvas {
@@ -118,12 +108,8 @@
     	<!--Canvas principal-->
 		<canvas id="mycanvas" height="720" width="1280">O seu browser não suporta este elemento</canvas>
 
-		<!--Detalhes do campo-->
-			<!--Vertical-->
-			<canvas id="divisaoVertical" height="720" width="3"></canvas>
-			
 			<!--Horizontal-->
-			<canvas id="divisaoHorizontal" height="3" width="1280"></canvas>
+			<canvas id="divisaoHorizontal" height="0" width="1468.6"></canvas>
 		<!--FIM DETALHES-->
 
 		<script>
@@ -519,7 +505,7 @@
 				ctx.fillRect(bola.x, bola.y, bola.largura, bola.altura);
 				ctx.font = "100px Arial";
 				ctx.fillText(esquerda.score, 320, 200);
-				ctx.fillText(direita.score, canvas.width - 320, 200);
+				ctx.fillText(direita.score, canvas.width - 320, canvas.height - 200);
 				
 
 				//player 1
