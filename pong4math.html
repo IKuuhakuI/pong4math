@@ -494,23 +494,42 @@
 
 			//Função que desenha os elementos no canvas
 			function desenha() {
-
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 				movebloco();
 				movebola();
 
-				ctx.fillStyle = "white";
+				if(canvas.getContext){
+					ctx.fillStyle = "white";
+					ctx.beginPath();
+    				ctx.moveTo(1280,0);
+    				ctx.lineTo(0,720);
+    				ctx.lineTo(1280,720);
+
+    				ctx.fill();
+    			}
+
+    			ctx.fillStyle = "white";
+    			ctx.strokeStyle = "black";
 
 				ctx.fillRect(bola.x, bola.y, bola.largura, bola.altura);
+				ctx.strokeRect(bola.x, bola.y, bola.largura, bola.altura);
+
 				ctx.font = "100px Arial";
 				ctx.fillText(esquerda.score, 320, 200);
+				ctx.fillStyle = "black";
 				ctx.fillText(direita.score, canvas.width - 320, canvas.height - 200);
 				
 
 				//player 1
+				ctx.fillStyle = "white";
+				ctx.strokeStyle = "black";
+
 				ctx.fillRect(esquerda.x, esquerda.y, esquerda.largura, esquerda.altura);
+				ctx.strokeRect(esquerda.x, esquerda.y, esquerda.largura, esquerda.altura);
+
 				ctx.fillRect(cima.x, cima.y, cima.largura, cima.altura);
+				ctx.strokeRect(cima.x, cima.y, cima.largura, cima.altura);
 
 
 				//player 2
@@ -522,10 +541,6 @@
 
 				ctx.fillRect(baixo.x, baixo.y, baixo.largura, baixo.altura);
 				ctx.strokeRect(baixo.x, baixo.y, baixo.largura, baixo.altura);	
-
-				//desenha detalhes
-				ctx.fillStyle = "red";
-				ctx.fillRect(canvas.width / 2 - 15, canvas.height, 30, 30);
 			};
 
 			//FIM FUNÇÕES
