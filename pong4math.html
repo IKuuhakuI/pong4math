@@ -141,6 +141,7 @@
 			//Como jogar 
 		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)");
 
+		    isPaused = false;
 			//Jogador esquerda
 			var esquerda = {
 				x: 10,
@@ -199,6 +200,8 @@
 			//Listeners
 				document.addEventListener("keydown", function(e) {
 					teclas[e.keyCode] = true;
+					if (e.keyCode == 80) 
+  						pause();
 					//alert(e.keyCode);
 				}, false);
 			
@@ -495,9 +498,10 @@
 			//Função que desenha os elementos no canvas
 			function desenha() {
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-				movebloco();
-				movebola();
+				if(!isPaused){
+						movebloco();
+						movebola();
+				}
 
 				if(canvas.getContext){
 					ctx.fillStyle = "white";
@@ -543,10 +547,17 @@
 				ctx.strokeRect(baixo.x, baixo.y, baixo.largura, baixo.altura);	
 			};
 
+			function pause(){
+				if(!isPaused){
+					isPaused = true;
+				} else if(isPaused){
+					isPaused = false;
+				}
+			};
 			//FIM FUNÇÕES
 
 			//Tempo para redesenhar tudo
-			setInterval(desenha, 1);
+			setInterval(desenha,1);	
 		</script>
 	
 	</body>
