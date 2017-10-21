@@ -142,7 +142,7 @@
 			var esquerda = {
 				x: 10,
 				y: canvas.height / 2 - 60,
-				altura: 150,
+				altura: 160,
 				largura: 25,
 				diry: 0,
 				score: 0,
@@ -154,7 +154,7 @@
 				x: canvas.width / 2 - 60,
 				y: 10,
 				altura: 25,
-				largura: 150,
+				largura: 160,
 				diry: 0,
 				speed: 5
 			};
@@ -164,7 +164,7 @@
 				var direita = {
 					x: canvas.width - 40,
 					y: canvas.height / 2 - 60,
-					altura: 150,
+					altura: 160,
 					largura: 25,
 					diry: 0,
 					score: 0,
@@ -176,7 +176,7 @@
 				x: canvas.width / 2 - 60,
 				y: canvas.height - 40,
 				altura: 25,
-				largura: 150,
+				largura: 160,
 				diry: 0,
 				speed: 5
 			};
@@ -497,6 +497,10 @@
 				if(!isPaused){
 						movebloco();
 						movebola();
+<<<<<<< HEAD
+						powerUp();
+=======
+>>>>>>> 71ba621445401fa1c728e26c0b37aa0e18f07795
 				}
 
 				if(canvas.getContext){
@@ -538,11 +542,40 @@
 				
 				ctx.fillRect(direita.x, direita.y, direita.largura, direita.altura);
 				ctx.strokeRect(direita.x, direita.y, direita.largura, direita.altura);
+<<<<<<< HEAD
 
 				ctx.fillRect(baixo.x, baixo.y, baixo.largura, baixo.altura);
 				ctx.strokeRect(baixo.x, baixo.y, baixo.largura, baixo.altura);	
 			};
 
+			function powerUp(){
+				if(esquerda.score > direita.score){
+					esquerda.altura = 160 - ((esquerda.score - direita.score)*8);
+					cima.largura = 160 - ((esquerda.score - direita.score)*8);
+
+					direita.altura = 160 + ((esquerda.score - direita.score)*8);
+					baixo.largura = 160 + ((esquerda.score - direita.score)*8);
+				} else if(esquerda.score < direita.score){
+					esquerda.altura = 160 + ((direita.score - esquerda.score)*8);
+					cima.largura = 160 + ((direita.score - esquerda.score)*8);
+=======
+
+				ctx.fillRect(baixo.x, baixo.y, baixo.largura, baixo.altura);
+				ctx.strokeRect(baixo.x, baixo.y, baixo.largura, baixo.altura);	
+			};
+>>>>>>> 71ba621445401fa1c728e26c0b37aa0e18f07795
+
+					direita.altura = 160 - ((direita.score - esquerda.score)*8);
+					baixo.largura = 160 - ((direita.score - esquerda.score)*8);
+				} else{
+					esquerda.altura = 160;
+					cima.largura = 160;
+
+					direita.altura = 160;
+					baixo.largura = 160;
+				}
+			}	
+			
 			function pause(){
 				if(!isPaused){
 					isPaused = true;
@@ -555,6 +588,5 @@
 			//Tempo para redesenhar tudo
 			setInterval(desenha,1);	
 		</script>
-	
 	</body>
 </html>
