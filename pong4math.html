@@ -1,6 +1,7 @@
 <html lang="pt-br">
 	<head>
 		<link rel="shortcut icon" href=".\favicon.ico">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Candara">
 		<meta charset="utf-8">
 		
 		<title>Pong4Math</title>
@@ -132,12 +133,16 @@
 					var scoreSound = new Audio();
 					scoreSound.src = "scoreSound.mp3";
 
+					//Gol da Alemanha
+					var golDaAlemanha = new Audio();
+					golDaAlemanha.src = "golDaAlemanha.mp3";
 			//END SOUNDS
 
 			//Como jogar 
 		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)");
 
 		    isPaused = false;
+		    isWhite = false; 
 			//Jogador esquerda
 			var esquerda = {
 				x: 10,
@@ -449,15 +454,23 @@
 			//Função que define quem marcou o ponto
 			function score(winner) {
 				if(winner == "player 1"){
-					scoreSound.play();
+					if(esquerda.score == 6 && direita.score == 1){
+						golDaAlemanha.play();
+					}else{
+						scoreSound.play();
+					}
 					++esquerda.score;
 				}
 				else if(winner == "player 2"){
-					scoreSound.play();
+					if(direita.score == 6 && esquerda.score == 1){
+						golDaAlemanha.play();
+					}else{
+						scoreSound.play();
+					}
 					++direita.score;
 				}
 				if (esquerda.score == SCORE){
-					winnerSound.play();
+						winnerSound.play();
 					alert("Jogador 1 é o vencedor!");
 					
 					//Cria uma caixa de mensagem perguntando se os jogadores querem continuar 
@@ -469,7 +482,7 @@
 					}
 				}
 				if (direita.score == SCORE){
-					winnerSound.play();
+						winnerSound.play();
 					alert("Jogador 2 é o vencedor!");
 					
 					//Cria uma caixa de mensagem perguntando se os jogadores querem continuar 
@@ -510,13 +523,12 @@
     				ctx.fill();
     			}
 
-    			ctx.fillStyle = "white";
-    			ctx.strokeStyle = "black";
-
+    			setColor();
 				ctx.fillRect(bola.x, bola.y, bola.largura, bola.altura);
 				ctx.strokeRect(bola.x, bola.y, bola.largura, bola.altura);
 
-				ctx.font = "100px Arial";
+				ctx.font = "100px ar_boo";
+				ctx.fillStyle = "white";
 				ctx.fillText(esquerda.score, 320, 200);
 				ctx.fillStyle = "black";
 				ctx.fillText(direita.score, canvas.width - 320, canvas.height - 200);
@@ -573,6 +585,16 @@
 					isPaused = false;
 				}
 			};
+
+			function setColor(){
+				if(isWhite){
+					ctx.fillStyle = "white";
+					ctx.strokeStyle = "black";
+				} else{
+					ctx.fillStyle = "black";
+					ctx.strokeStyle = "white";
+				}
+			}
 			//FIM FUNÇÕES
 
 			//Tempo para redesenhar tudo
