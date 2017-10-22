@@ -37,6 +37,7 @@
 	</head>
 	<body style="background-color: black">
 		<script src="https://www.w3schools.com/lib/w3.js"></script>
+			<!--Barra preta-->
 			<div id="barra">
 				<!--Logo-->
 				<h1><p id="pong"> Pong4Math </p></h1>
@@ -47,6 +48,7 @@
     			</ul>
     		</div>
 
+    		<!--Regras-->
     		<div id="container">
       			<h2 style="margin-top:20px;">Regras</h2>
       			<p style="margin-top: -30px;"></p>
@@ -63,26 +65,25 @@
      			<div id="comoJogar">
         		<p id="linha1" class="regras" style="margin-top:-60px;">O objetivo do jogo é marcar gols. O primeiro que marcar 10 ganha. Quanto mais tempo a bola ficar em jogo, maior será a sua velocidade. As barras do 	jogador que estiver ganhando serão menores e as do que estiver perdendo serão maiores</p>
       		</div>
+      		<!--FIM DAS REGRAS-->
     	</div>
 
     	<!--Canvas principal-->
 		<canvas id="mycanvas" height="720" width="1280">O seu browser não suporta este elemento</canvas>
-		<script>
+		<script>		
 			//Constantes
 			const SCORE = 10;
 
 			//Variáveis
-		    isPaused = false;
-		    isWhite = false; 
-		    regrasActive = false;
+		   		isPaused = false;
+		    	isWhite = false; 
+		   		regrasActive = false;
+		   		var teclas = {};
 
 			//Canvas
-			var canvas = document.getElementById("mycanvas");
-			var ctx = canvas.getContext("2d");
+				var canvas = document.getElementById("mycanvas");
+				var ctx = canvas.getContext("2d");
 
-			//Teclas
-			var teclas = {};
-			
 			//sounds
 			 	//Som que toca quando um jogador acerta a bola
 				var pongSound = new Audio();
@@ -397,7 +398,6 @@
 					++direita.score;
 				}
 				if (esquerda.score == SCORE){
-
 					playWinnerSound();
 					playFatality();
 
@@ -490,6 +490,7 @@
 				ctx.strokeRect(baixo.x, baixo.y, baixo.largura, baixo.altura);	
 			};
 
+			//Função que aumenta e diminui os players
 			function powerUp(){
 				if(esquerda.score > direita.score){
 					esquerda.altura = 160 - ((esquerda.score - direita.score)*8);
@@ -512,6 +513,7 @@
 				}
 			}	
 			
+			//Função que define o isPaused como true ou false
 			function pause(){
 				if(!isPaused){
 					isPaused = true;
@@ -520,6 +522,7 @@
 				}
 			};
 
+			//Função que degine o regrasActive como true ou false
 			function showRegras(){
 				if(regrasActive == false){
 					w3.hide('#mycanvas');
@@ -531,21 +534,24 @@
 					regrasActive = false;
 				}
 			}
-			//FIM FUNÇÕES
 
+			//Função que toca o som winnerSound
 			function playWinnerSound(){
 				winnerSound.play();
 			}
 
+			//Função que toca o som fatality
 			function playFatality(){
 				if(direita.score == 10 && esquerda.score == 0 || esquerda.score == 10 && direita.score == 0){
 					fatality.play();
 				} 
 			}
+			//FIM FUNÇÕES
 
 			//Tempo para redesenhar tudo
 			setInterval(desenha,1);	
 
+			//Condição que diz que as regras desaparecem quando regrasActive for false
 			if(regrasActive == false){
 				w3.hide('#container');
 			}
