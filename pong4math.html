@@ -397,7 +397,9 @@
 					++direita.score;
 				}
 				if (esquerda.score == SCORE){
+
 					playWinnerSound();
+					playFatality();
 
 					alert("Jogador 1 é o vencedor!");
 					
@@ -409,8 +411,10 @@
   						window.location.replace("index.html");
 					}
 				}
+				
 				if (direita.score == SCORE){
-					playWinnerSound();
+						playWinnerSound();
+					playFatality();
 					
 					alert("Jogador 2 é o vencedor!");
 					
@@ -424,9 +428,9 @@
 				}
 
 				esquerda.y = canvas.height / 2 - esquerda.altura / 2;
-				direita.y = esquerda.y;
+				direita.y = canvas.height/2 - direita.altura/2;
 				cima.x = canvas.width / 2 - cima.largura/2;
-				baixo.x = cima.x;
+				baixo.x = canvas.width / 2 - baixo.largura/2;
 				bola.y = canvas.height / 2 - bola.altura / 2;
 				bola.x = canvas.width / 2 - bola.largura / 2;
 				bola.mod = 0;
@@ -452,7 +456,8 @@
     				ctx.fill();
     			}
 
-    			setColor();
+    			ctx.fillStyle = "gray";
+    			ctx.strokeStyle = "black";
 				ctx.fillRect(bola.x, bola.y, bola.largura, bola.altura);
 				ctx.strokeRect(bola.x, bola.y, bola.largura, bola.altura);
 
@@ -526,26 +531,16 @@
 					regrasActive = false;
 				}
 			}
-
-			function setColor(){
-				if(isWhite){
-					ctx.fillStyle = "white";
-					ctx.strokeStyle = "black";
-				} else{
-					ctx.fillStyle = "black";
-					ctx.strokeStyle = "white";
-				}
-			}
 			//FIM FUNÇÕES
 
 			function playWinnerSound(){
+				winnerSound.play();
+			}
+
+			function playFatality(){
 				if(direita.score == 10 && esquerda.score == 0 || esquerda.score == 10 && direita.score == 0){
 					fatality.play();
 				} 
-
-				else if(direita.score == 10 || esquerda.score == 10){
-					winnerSound.play();
-				}
 			}
 
 			//Tempo para redesenhar tudo
