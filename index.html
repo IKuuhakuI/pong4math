@@ -5,9 +5,10 @@
     <meta charset="utf-8" />
     <title>Pong4Math</title>
     <style>
+      div#barra{background-color: black; height: 100px; position: fixed; z-index: 2; width: 110%; margin-top: -10px; margin-left: -10px;}
       ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: transparent;position: fixed;float: left;margin-left: 70%;margin-top: 10px;height: 53px;z-index: 10;}
 
-      li {float: left;text-decoration-color: white;margin-right: 50px;}
+      li {float: left;text-decoration-color: white;margin-right: 50px; padding: 0px;}
 
       li a {display: block;color: black;text-align: center;padding: 14px 16px;text-decoration: none;font-family: arial;border-color: white;border-style: solid; color: white;font-weight: bold;border-radius: 500px;}
 
@@ -17,19 +18,22 @@
 
       li a.active {background-color: white;color: black;}
 
-      p {color: white;border-style: solid;border-color: blackmargin-top: 10px;margin-bottom: 10px;font-family: 'Candara';}
+      p {color: white;border-style: solid;border-color: black;margin-top: 10px;margin-bottom: 10px;font-family: 'Candara';}
 
       #pong {float: left;width: 10px;font-weight:bold;border-style: none;margin-top: 10px;text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white;font-size: 160%;color: black;position: fixed;margin-left: 25%;margin-top:10px;}
       
       #campo{border: white;border-style: solid;background-color: black;margin-top: -300px;margin-left: -300px;position: absolute;left: 50%;top: 50%;z-index: 20;}
 
-      #container{text-align:center; height: 720; width: 1280; border:dotted; background-color: white; position: absolute; margin-left: 23%; margin-top: 50px;}
-
+      #container{text-align:center; height: 720; width: 1280; border:dotted; background-color: white; position: absolute; margin-left: 23%; margin-top: 60px; z-index: 1;}
       #container h2{color: black; font-family:'Candara'; font-size: 50px;}
+      #container .regras{border: none; color: black; font-size: 30px; font-family:'Candara'; margin-top: -20px;}
+      #container p#linha1{margin-top: -50px;}
+
+      #comoJogar{position: absolute; height: 200px; width: 1100px; text-align: center; margin-left: 6%}
     </style>
   </head>
   <body style = "background-color: black">
-    <div style="position:center;">
+    <div id="barra">
       <h1><p id="pong"> Pong4Math </p></h1>
       <ul>
         <li><a class="active" href="index.html">Home</a></li>
@@ -37,7 +41,21 @@
       </ul>
     </div><br /><br />
     <div id="container">
-      <h2>Regras</h2>
+      <h2 style="margin-top:20px;">Regras</h2>
+      <p style="margin-top: -30px;"></p>
+      <p></p>
+      <h2 style="margin-top:0px;">Movimentação:</h2><br />
+      <p id="linha1" class="regras">Jogador 1(esquerda e em cima): W(pra cima)/A(pra esquerda)/S(pra baixo)/D(pra direita)</p><br />
+      <p class="regras">Jogador 2(direita e embaixo): Setas</p>
+      <p></p>
+      <h2 style="margin-top: 0px;">Outros comandos:</h2><br />
+      <p id="linha1" class="regras">R: Mostra a página de regras</p><br />
+      <p class="regras">P: Pausa</p>
+      <p></p>
+      <h2 style="margin-top: 0px;">Como ganhar:</h2><br />
+      <div id="comoJogar">
+        <p id="linha1" class="regras" style="margin-top:-60px;">O objetivo do jogo é marcar gols. O primeiro que marcar 10 ganha. Quanto mais tempo a bola ficar em jogo, maior será a sua velocidade. As barras do jogador que estiver ganhando serão menores e as do que estiver perdendo serão maiores</p>
+      </div>
     </div>
   
   </body>
