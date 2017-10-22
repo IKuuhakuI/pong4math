@@ -7,7 +7,6 @@
 		<title>Pong4Math</title>
 		
 		<style>
-			div#barra{background-color: black; height: 100px; position: fixed; z-index: 2; width: 110%; margin-top: -10px; margin-left: -10px;}
 		    ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: transparent;position: fixed;float: left;margin-left: 70%;margin-top: 10px;height: 53px;z-index: 10;}
 
 		    li {float: left;text-decoration-color: white;margin-right: 50px; padding: 0px;}
@@ -26,13 +25,22 @@
 		      
 		    #campo{border: white;border-style: solid;background-color: black;margin-top: -300px;margin-left: -300px;position: absolute;left: 50%;top: 50%;z-index: 20;}
 
-		    #container{text-align:center; height: 720; width: 1280; border:dotted; background-color: white; position: absolute; margin-left: 23%; margin-top: 150px; z-index: 1;}
+		    div#barra{background-color: black; height: 100px; position: fixed; z-index: 2; width: 100%; margin-top: 0px; margin-left: -10px; margin-bottom: 100px; position:absolute;	}
+
+		    #container{text-align:center; height: 720; width: 1280; border: none; background-color: white; margin-left: 23%; margin-top: 0px;}
 		    #container h2{color: black; font-family:'Candara'; font-size: 50px;}
-		    #container .regras{border: none; color: black; font-size: 30px; font-family:'Candara'; margin-top: -20px;}
+		    #container .regras{border: none; color: black; font-size: 30px; font-family:'Candara'; margin-top: -20px; border: none;}
 		    #container p#linha1{margin-top: -50px;}
 
 		    #comoJogar{position: absolute; height: 200px; width: 1100px; text-align: center; margin-left: 6%}
-			#mycanvas {border: white;border-style: solid;background-color: ;margin-top: -300px;margin-left: 23%;position: absolute;margin-top: 150px;z-index: 100;}
+		
+			#mycanvas {border: white;border-style: solid;margin-left: 23%; margin-top: 10px;}
+			
+			form{text-align: center; margin-top: 20px;}
+			#btn{border: none; width: 50px; height: 50px; margin-top:100px; margin-left:77%; font-size: 25px; color:#000; background-color: #FFF;}
+			#btn2{border: none; width: 50px; height: 50px; margin-top:-50px; margin-left: 80%; font-size: 25px; color:#000; background-color: #FFF;}
+			#btn:hover{background-color: #000;color: #FFF;cursor: pointer;}
+			#btn2:hover{background-color: #000;color: #FFF;cursor: pointer;}
 		</style>
 	</head>
 	<body style="background-color: black">
@@ -47,27 +55,34 @@
       				<li><a class="active" href="pong4math.html">Pong de 4</a></li>
     			</ul>
     		</div>
-
+  			
+  			<button id="btn" onclick="pause()">P</button>
+  			<button id="btn2" onclick="showRegras()">R</button>
+  			<!--
+    			<form>
+    				<input type="submit" value="P" name="P">
+    				<input type="submit" value="R" name="R" style="margin-left: 60%; margin-top:-50px;">
+    			</form>
+			-->
     		<!--Regras-->
-    		<div id="container">
-      			<h2 style="margin-top:20px;">Regras</h2>
-      			<p style="margin-top: -30px;"></p>
-      			<p></p>
-      			<h2 style="margin-top:0px;">Movimentação:</h2><br />
-      			<p id="linha1" class="regras">Jogador 1(esquerda e em cima): W(pra cima)/A(pra esquerda)/S(pra baixo)/D(pra direita)</p><br />
-      			<p class="regras">Jogador 2(direita e embaixo): Setas</p>
-      			<p></p>
-      			<h2 style="margin-top: 0px;">Outros comandos:</h2><br />
-      			<p id="linha1" class="regras">R: Mostra a página de regras</p><br />
-      			<p class="regras">P: Pausa</p>
-      			<p></p>
-      			<h2 style="margin-top: 0px;">Como ganhar:</h2><br />
-     			<div id="comoJogar">
-        		<p id="linha1" class="regras" style="margin-top:-60px;">O objetivo do jogo é marcar gols. O primeiro que marcar 10 ganha. Quanto mais tempo a bola ficar em jogo, maior será a sua velocidade. As barras do 	jogador que estiver ganhando serão menores e as do que estiver perdendo serão maiores</p>
-      		</div>
+    				<div id="container">
+      					<h2 style="margin-top:20px;">Regras</h2>
+      					<p style="margin-top: -30px;"></p>
+      					<p></p>
+      					<h2 style="margin-top:0px;">Movimentação:</h2><br />
+      					<p id="linha1" class="regras">Jogador 1(esquerda e em cima): W(pra cima)/A(pra esquerda)/S(pra baixo)/D(pra direita)</p><br />
+      					<p class="regras">Jogador 2(direita e embaixo): Setas</p>
+      					<p></p>
+      					<h2 style="margin-top: 0px;">Outros comandos:</h2><br />
+      					<p id="linha1" class="regras">R: Mostra a página de regras</p><br />
+      					<p class="regras">P: Pausa</p>
+      					<p></p>
+      					<h2 style="margin-top: 0px;">Como ganhar:</h2><br />
+     					<div id="comoJogar">
+        						<p id="linha1" class="regras" style="margin-top:-60px;">O objetivo do jogo é marcar gols. O primeiro que marcar 10 ganha. Quanto mais tempo a bola ficar em jogo, maior será a sua velocidade. As barras do 	jogador que estiver ganhando serão menores e as do que estiver perdendo serão maiores</p>
+      					</div>
+      				</div>
       		<!--FIM DAS REGRAS-->
-    	</div>
-
     	<!--Canvas principal-->
 		<canvas id="mycanvas" height="720" width="1280">O seu browser não suporta este elemento</canvas>
 		<script>		
@@ -107,7 +122,7 @@
 			//END SOUNDS
 
 			//Como jogar 
-		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)");
+		    alert("Jogador 1= W/A/S/D (cima e esquerda) Jogador 2 = Setas (baixo e direita)  R: Mostra as regras | P: Pausa o jogo");
 
 		    //Player1
 				//Jogador esquerda
@@ -127,9 +142,9 @@
 			//Listeners
 				document.addEventListener("keydown", function(e) {
 					teclas[e.keyCode] = true;
-					if (e.keyCode == 80 && regrasActive == false) 
+					if (e.keyCode == 80) 
   						pause();
-  					if (e.keyCode == 82 && isPaused == false)
+  					if (e.keyCode == 82)
   						showRegras();
 					//alert(e.keyCode);
 				}, false);
@@ -397,9 +412,12 @@
 					}
 					++direita.score;
 				}
+
 				if (esquerda.score == SCORE){
-					playWinnerSound();
 					playFatality();
+					if (direita.score > 0){
+						winnerSound.play();
+					}
 
 					alert("Jogador 1 é o vencedor!");
 					
@@ -413,8 +431,8 @@
 				}
 				
 				if (direita.score == SCORE){
-						playWinnerSound();
 					playFatality();
+					winnerSound.play();
 					
 					alert("Jogador 2 é o vencedor!");
 					
@@ -435,7 +453,12 @@
 				bola.x = canvas.width / 2 - bola.largura / 2;
 				bola.mod = 0;
 				bola.speed = 1;
+				bola.dirx = -1;
+				bola.diry = 1;
+				
 			};
+
+			
 
 			//Função que desenha os elementos no canvas
 			function desenha() {
@@ -532,6 +555,7 @@
 					w3.show('#mycanvas');
 					w3.hide('#container');
 					regrasActive = false;
+					isPaused = false;
 				}
 			}
 
