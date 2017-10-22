@@ -154,6 +154,11 @@
 				}, false);
 			//FIM Listerners
 
+			//Condição que diz que as regras desaparecem quando regrasActive for false
+			if(regrasActive == false){
+				w3.hide('#container');
+			}
+
 			//Funções
 			//Função que move os jogadores
 			function movebloco() {
@@ -432,7 +437,6 @@
 				
 				if (direita.score == SCORE){
 					playFatality();
-					winnerSound.play();
 					
 					alert("Jogador 2 é o vencedor!");
 					
@@ -455,10 +459,7 @@
 				bola.speed = 1;
 				bola.dirx = -1;
 				bola.diry = 1;
-				
 			};
-
-			
 
 			//Função que desenha os elementos no canvas
 			function desenha() {
@@ -559,11 +560,6 @@
 				}
 			}
 
-			//Função que toca o som winnerSound
-			function playWinnerSound(){
-				winnerSound.play();
-			}
-
 			//Função que toca o som fatality
 			function playFatality(){
 				if(direita.score == 10 && esquerda.score == 0 || esquerda.score == 10 && direita.score == 0){
@@ -574,11 +570,6 @@
 
 			//Tempo para redesenhar tudo
 			setInterval(desenha,1);	
-
-			//Condição que diz que as regras desaparecem quando regrasActive for false
-			if(regrasActive == false){
-				w3.hide('#container');
-			}
 		</script>
 	</body>
 </html>
