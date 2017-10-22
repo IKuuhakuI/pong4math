@@ -99,6 +99,10 @@
 				//Gol da Alemanha
 				var golDaAlemanha = new Audio();
 				golDaAlemanha.src = "golDaAlemanha.mp3";
+
+				//fatality
+				var fatality = new Audio();
+				fatality.src = "fatality.mp3";
 			//END SOUNDS
 
 			//Como jogar 
@@ -393,7 +397,8 @@
 					++direita.score;
 				}
 				if (esquerda.score == SCORE){
-						winnerSound.play();
+					playWinnerSound();
+
 					alert("Jogador 1 é o vencedor!");
 					
 					//Cria uma caixa de mensagem perguntando se os jogadores querem continuar 
@@ -401,11 +406,12 @@
 					if (continuarJogando) {
   						window.location.reload();
 					} else {
-  						window.location.replace("index.html")
+  						window.location.replace("index.html");
 					}
 				}
 				if (direita.score == SCORE){
-						winnerSound.play();
+					playWinnerSound();
+					
 					alert("Jogador 2 é o vencedor!");
 					
 					//Cria uma caixa de mensagem perguntando se os jogadores querem continuar 
@@ -531,6 +537,16 @@
 				}
 			}
 			//FIM FUNÇÕES
+
+			function playWinnerSound(){
+				if(direita.score == 10 && esquerda.score == 0 || esquerda.score == 10 && direita.score == 0){
+					fatality.play();
+				} 
+
+				else if(direita.score == 10 || esquerda.score == 10){
+					winnerSound.play();
+				}
+			}
 
 			//Tempo para redesenhar tudo
 			setInterval(desenha,1);	
